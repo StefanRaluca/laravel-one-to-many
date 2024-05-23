@@ -17,17 +17,6 @@
                 @enderror
             </div>
 
-            {{-- <div class="mb-3">
-                <label for="image_cover" class="form-label">image_cover</label>
-                <input type="text" class="form-control @error('image_cover') is-invalid @enderror" name="image_cover"
-                    id="image_cover" aria-describedby="image_coverHelper" placeholder="https://"
-                    value="{{ old('image_cover') }}" />
-                @error('image_cover')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-            </div> --}}
-
             <div class="mb-3">
                 <label for="image_cover" class="form-label">Cover Image</label>
                 <input type="file" class="form-control @error('image_cover') is-invalid @enderror " name="image_cover"
@@ -35,6 +24,18 @@
                 @error('image_cover')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Type of project</label>
+                <select class="form-select" name="type_id" id="type_id">
+                    <option selected disabled>Select a type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $type->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-3">
@@ -60,7 +61,8 @@
             <div class="mb-3">
                 <label for="url_code" class="form-label">url_code</label>
                 <input type="text" class="form-control @error('url_code') is-invalid @enderror" name="url_code"
-                    id="url_code" aria-describedby="url_codeHelper" placeholder="https://" value="{{ old('url_code') }}" />
+                    id="url_code" aria-describedby="url_codeHelper" placeholder="https://"
+                    value="{{ old('url_code') }}" />
                 @error('url_code')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
