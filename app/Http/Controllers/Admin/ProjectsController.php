@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Models\Project;
 use App\Models\Type;
 use App\Http\Requests\StoreProjectRequest;
