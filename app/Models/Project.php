@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'slug', 'image_cover', 'image_cover', 'description', 'start_date', 'preview_url', 'url_code', 'team_members'];
+    protected $fillable = ['title', 'slug', 'type_id', 'image_cover', 'image_cover', 'description', 'start_date', 'preview_url', 'url_code', 'team_members'];
 
     public function type(): BelongsTo
     {

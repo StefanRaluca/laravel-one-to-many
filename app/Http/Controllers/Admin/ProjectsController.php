@@ -19,7 +19,7 @@ class ProjectsController extends Controller
     public function index()
     {
         //dd(Post::all());
-        return view('admin.projects.index', ['projects' => Project::orderByRaw('id')->paginate(6)]);
+        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->paginate(6)]);
     }
 
     /**
@@ -28,7 +28,7 @@ class ProjectsController extends Controller
     public function create()
     {
         $types = Type::all();
-        dd($types);
+        // dd($types);
         return view('admin.projects.create', compact('types'));
     }
 
@@ -37,16 +37,16 @@ class ProjectsController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $validate_date = $request->validated();
+        $validated_data = $request->validated();
         $slug = Str::of($request->title)->slug('-');
+        $validated_data['slug'] = $slug;
 
-        $validate_date['slug'] = $slug;
+        if ($request->hasFile('image_cover')) {
+            $img_path = Storage::put('uploads', $request->file('image_cover'));
+            $validated_data['image_cover'] = $img_path;
+        }
 
-        $img_path = Storage::put('uploads', $request->image_cover);
-
-        $validate_date['image_cover'] = $img_path;
-
-        Project::create($validate_date);
+        Project::create($validated_data);
         return to_route('admin.projects.index')->with('message', "New project it's created!");
     }
 
@@ -55,7 +55,9 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $types = Type::all();
+        //dd($types);
+        return view('admin.projects.show', compact('project', 'types'));
     }
 
     /**
@@ -63,7 +65,9 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        //dd($types);
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -73,18 +77,15 @@ class ProjectsController extends Controller
     {
 
 
-        $validate_date = $request->validated();
-        if ($request->has('image_cover')) {
+        $validated_data = $request->validated();
+        if ($request->hasFile('image_cover')) {
             if ($project->image_cover) {
                 Storage::delete($project->image_cover);
             }
-
-            $img_path = Storage::put('uploads', $request->image_cover);
-            $validate_date['image_cover'] = $img_path;
+            $img_path = Storage::put('uploads', $request->file('image_cover'));
+            $validated_data['image_cover'] = $img_path;
         }
-
-        $project->update($validate_date);
-
+        $project->update($validated_data);
         return to_route('admin.projects.index')->with('message', "Project $project->title updated!");
     }
 

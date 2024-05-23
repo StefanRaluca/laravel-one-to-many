@@ -21,6 +21,7 @@
                         <th scope="col">Image Preview</th>
                         <th scope="col">Code Snippet</th>
                         <th scope="col">Team Members</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Modify</th>
 
 
@@ -58,7 +59,7 @@
                             <td><img width="60" src="{{ $project->preview_url }}" alt=""></td>
                             <td>{{ $project->url_code }}</td>
                             <td>{{ $project->team_members }}</td>
-
+                            <td>{{ $project->type ? $project->type->name : 'No type for now' }}</td>
                             <td><a href="{{ route('admin.projects.show', $project) }}" class="btn btn-dark m-1"><i
                                         class="fa fa-eye" aria-hidden="true"></i></a>
 

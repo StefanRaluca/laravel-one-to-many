@@ -16,7 +16,10 @@
                         target="_blank">{{ $project->preview_url }}</a></p>
                 <p><strong>Code URL:</strong> <a href="{{ $project->url_code }}" target="_blank">{{ $project->url_code }}</a>
                 </p>
-
+                <div class="metadata">
+                    <strong>Type</strong> {{ $project->type ? $project->type->name : 'Uncategorized' }}
+                </div>
+                <p>{{ $project->content }}</p>
                 <p><strong>Description:</strong> {{ $project->description }}</p>
                 <button class="btn btn-primary"><a href="{{ route('admin.projects.index') }}"
                         class="text-decoration-none text-white py-3">See All</a>
