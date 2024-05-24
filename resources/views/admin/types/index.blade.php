@@ -31,14 +31,15 @@
                             <td>{{ $type->description }}</td>
                             <td>{{ $type->active ? 'Yes' : 'No' }}</td>
                             <td>
-                                <a href="{{ route('admin.types.show', $type) }}" class="btn btn-dark m-1"><i
-                                        class="fa fa-eye" aria-hidden="true"></i></a>
-
-                                <a href="{{ route('admin.types.edit', $type->id) }}" class="btn btn-dark  m-1"><i
-                                        class="fa fa-pencil" aria-hidden="true"></i></a>
-
-
-                                {{--           @include('partials.form-delete')  --}}
+                                <div class="d-flex flex-column">
+                                    <a href="{{ route('admin.types.show', $type) }}" class="btn btn-dark m-1">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                                    </a>
+                                    <a href="{{ route('admin.types.edit', $type->id) }}" class="btn btn-dark m-1">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                    </a>
+                                    @include('partials.form-delete-type')
+                                </div>
                             </td>
                         </tr>
 

@@ -67,7 +67,7 @@
                                         class="fa fa-pencil" aria-hidden="true"></i></a>
 
 
-                                @include('partials.form-delete')
+                                @include('partials.form-delete-project')
                             </td>
                         </tr>
 
