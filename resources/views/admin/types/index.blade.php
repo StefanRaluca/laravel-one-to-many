@@ -17,6 +17,8 @@
                         <th scope="col" style="width: 20%">Slug</th>
                         <th scope="col" style="width: 30%">Description</th>
                         <th scope="col" style="width: 15%">Active</th>
+                        <th scope="col">Modify</th>
+
 
                     </tr>
                 </thead>
@@ -28,15 +30,16 @@
                             <td>{{ $type->slug }}</td>
                             <td>{{ $type->description }}</td>
                             <td>{{ $type->active ? 'Yes' : 'No' }}</td>
-                            {{--   <td><a href="{{ route('admin.types.show', $project) }}" class="btn btn-dark m-1"><i
-                                        class="fa fa-eye" aria-hidden="true"></i></a>
+                            <td>
+                                {{--     <a href="{{ route('admin.types.show', $type) }}" class="btn btn-dark m-1"><i
+                                        class="fa fa-eye" aria-hidden="true"></i></a> --}}
 
-                                <a href="{{ route('admin.types.edit', $project->id) }}" class="btn btn-dark  m-1"><i
+                                <a href="{{ route('admin.types.edit', $type->id) }}" class="btn btn-dark  m-1"><i
                                         class="fa fa-pencil" aria-hidden="true"></i></a>
 
 
-                                @include('partials.form-delete')
-                            </td> --}}
+                                {{--           @include('partials.form-delete')  --}}
+                            </td>
                         </tr>
 
                     @empty
