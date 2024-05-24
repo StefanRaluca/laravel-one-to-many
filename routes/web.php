@@ -26,12 +26,12 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('projects', ProjectsController::class)/* ->parameters([
-'projects' => 'project:slug'
-]) */ ;
-        Route::resource('types', TypeController::class)/* ->parameters([
-'types' => 'type:slug'
-]) */ ;
+        Route::resource('projects', ProjectsController::class)->parameters([
+            'projects' => 'project:slug'
+        ]);
+        Route::resource('types', TypeController::class)->parameters([
+            'types' => 'type:slug'
+        ]);
 
     });
 

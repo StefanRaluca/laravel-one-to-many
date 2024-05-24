@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container p-3">
-        <h1>Add a new project</h1>
+        <h1 class="p-2 bg-dark text-white">Add a new project</h1>
         @include('partials.error')
         @include('partials.message')
 
@@ -9,7 +9,7 @@
             @csrf
 
             <div class="mb-3">
-                <label for="name" class="form-label">name </label>
+                <label for="name" class="form-label">Name </label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                     aria-describedby="nameHelper" placeholder="Lorem lorem lorem" value="{{ old('name') }}" />
                 @error('name')
@@ -41,6 +41,7 @@
                 Create
             </button>
             <a href="{{ route('admin.types.index') }}" class="text-decoration-none text-white btn btn-secondary">Back</a>
+
 
 
         </form>

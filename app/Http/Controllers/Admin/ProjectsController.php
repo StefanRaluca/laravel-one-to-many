@@ -37,9 +37,8 @@ class ProjectsController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $validated_data = $request->validated();
-        $slug = Str::of($request->title)->slug('-');
+        $slug = Str::slug($request->title, '-');
         $validated_data['slug'] = $slug;
-
         if ($request->hasFile('image_cover')) {
             $img_path = Storage::put('uploads', $request->file('image_cover'));
             $validated_data['image_cover'] = $img_path;
@@ -65,7 +64,7 @@ class ProjectsController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        dd($types);
+        //dd($types);
         return view('admin.projects.edit', compact('project', 'types'));
     }
 
@@ -77,7 +76,7 @@ class ProjectsController extends Controller
 
 
         $validated_data = $request->validated();
-        $slug = Str::of($request->title)->slug('-');
+        $slug = Str::slug($request->title, '-');
         $validated_data['slug'] = $slug;
         if ($request->hasFile('image_cover')) {
             if ($project->image_cover) {

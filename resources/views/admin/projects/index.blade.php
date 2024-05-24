@@ -63,7 +63,7 @@
                             <td><a href="{{ route('admin.projects.show', $project) }}" class="btn btn-dark m-1"><i
                                         class="fa fa-eye" aria-hidden="true"></i></a>
 
-                                <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-dark  m-1"><i
+                                <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-dark  m-1"><i
                                         class="fa fa-pencil" aria-hidden="true"></i></a>
 
 
