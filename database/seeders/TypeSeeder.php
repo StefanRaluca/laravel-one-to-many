@@ -17,20 +17,26 @@ class TypeSeeder extends Seeder
         $types = [
             [
                 'name' => 'Web Development',
-                'slug' => Str::of('name')->slug('-'),
+                'slug' => Str::slug('Web Development', '-'),
                 'description' => 'Projects related to AI development.',
                 'active' => true,
             ],
             [
                 'name' => 'Mobile App Dev',
-                'slug' => Str::of('name')->slug('-'),
+                'slug' => Str::slug('Mobile App Dev', '-'),
                 'description' => 'Projects related to mobile application.',
                 'active' => true,
             ],
             [
                 'name' => 'Graphic Design',
-                'slug' => Str::of('name')->slug('-'),
+                'slug' => Str::slug('Graphic Design', '-'),
                 'description' => 'Projects related to UI design.',
+                'active' => true,
+            ],
+            [
+                'name' => 'UI Canva',
+                'slug' => Str::slug('Ui Canva', '-'),
+                'description' => 'Projects related to UI design,for front-end develop',
                 'active' => true,
             ]
         ];

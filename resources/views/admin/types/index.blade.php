@@ -48,6 +48,6 @@
             </table>
         </div>
 
-        {{ $projects->links('pagination::bootstrap-5') }}
+        {{ $types->links('pagination::bootstrap-5') }}
     </div>
 @endsection
