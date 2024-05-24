@@ -6,7 +6,7 @@
 
         <div class="d-flex justify-content-between align-items-center py-3">
             <h2>Types of project</h2>
-            {{--   <a href="{{ route('admin.types.create') }}" class="btn btn-primary m-1">Add a new project</a> --}}
+            <a href="{{ route('admin.types.create') }}" class="btn btn-primary m-1">Add a new project</a>
         </div>
         <div class="table-responsive">
             <table class="table table-primary">
@@ -17,6 +17,7 @@
                         <th scope="col" style="width: 20%">Slug</th>
                         <th scope="col" style="width: 30%">Description</th>
                         <th scope="col" style="width: 15%">Active</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +27,7 @@
                             <td>{{ $type->name }}</td>
                             <td>{{ $type->slug }}</td>
                             <td>{{ $type->description }}</td>
-                            <td>{{ $type->active }}</td>
+                            <td>{{ $type->active ? 'Yes' : 'No' }}</td>
                             {{--   <td><a href="{{ route('admin.types.show', $project) }}" class="btn btn-dark m-1"><i
                                         class="fa fa-eye" aria-hidden="true"></i></a>
 
